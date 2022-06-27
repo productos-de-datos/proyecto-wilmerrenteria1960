@@ -9,6 +9,12 @@ def transform_data():
     """
     import os
     import pandas as pd
+    import subprocess
+
+
+    subprocess.call(["pip", "install", "openpyxl"])
+    subprocess.call(["pip", "install", "xlrd"])
+
 
     archivoslanding = []
     for files in os.listdir("data_lake/landing/"):
