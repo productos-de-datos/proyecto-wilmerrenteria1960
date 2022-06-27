@@ -25,14 +25,14 @@ def transform_data():
 
     for archivo in archivoslanding:
         df = pd.read_excel(archivo,index_col=None, header=None)
-        indexDF = df.index[df.iloc[:, 0] == 'Fecha'].tolist()
-        dffinal = df.iloc[indexDF[0]+1:,0:25]
+        indexDF = df[df.iloc[:, 0] == "Fecha"].index[0] +1 
+        dffinal = df.iloc[indexDF:,0:25]
         dffinal.columns = ["Fecha","H00","H01","H02","H03","H04","H05","H06","H07","H08","H09","H10","H11","H12","H13","H14","H15","H16","H17","H18","H19","H20","H21","H22","H23"]
         dffinal['Fecha'] =  dffinal[['Fecha']].apply(pd.to_datetime)
         dffinal['Fecha'] = dffinal['Fecha'].dt.date
         nombreExtension = archivo.split("/")[-1]
         nombreCSV = nombreExtension.split(".")[0] + ".csv"
-        df.to_csv("data_lake/raw/" + nombreCSV, index=False)
+        dffinal.to_csv("data_lake/raw/" + nombreCSV, index=False)
 
     #raise NotImplementedError("Implementar esta función")
 
