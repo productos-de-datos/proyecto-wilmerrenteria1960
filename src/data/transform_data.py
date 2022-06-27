@@ -11,9 +11,11 @@ def transform_data():
     import pandas as pd
 
     archivoslanding = []
-    for files in os.listdir("/data_lake/landing"):
+    for files in os.listdir("data_lake/landing/"):
         if files.endswith(".xls") or files.endswith(".xlsx"):
-            archivoslanding.append("/data_lake/landing/" + files)
+            archivoslanding.append("data_lake/landing/" + files)
+
+    print (archivoslanding)
 
     for archivo in archivoslanding:
         df = pd.read_excel(archivo,index_col=None, header=None)
@@ -24,12 +26,14 @@ def transform_data():
         dffinal['Fecha'] = dffinal['Fecha'].dt.date
         nombreExtension = archivo.split("/")[-1]
         nombreCSV = nombreExtension.split(".")[0] + ".csv"
-        df.to_csv("/data_lake/raw/" + nombreCSV, index=False)
+        df.to_csv("data_lake/raw/" + nombreCSV, index=False)
 
     #raise NotImplementedError("Implementar esta función")
 
-
+ 
 if __name__ == "__main__":
     import doctest
     transform_data()
     doctest.testmod()
+    
+    
