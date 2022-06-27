@@ -39,3 +39,4 @@ if __name__ == "__main__":
     import doctest
 
     doctest.testmod()
+    create_data_lake()
