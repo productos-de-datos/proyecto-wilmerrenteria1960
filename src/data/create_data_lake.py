@@ -21,7 +21,18 @@ def create_data_lake():
 
 
     """
-    raise NotImplementedError("Implementar esta función")
+    import os
+    os.mkdir('./data_lake/')
+
+    folders = ['landing', 'raw', 'cleansed', 'business','business/reports','business/features','business/forecasts', 'business/reports/figures']
+
+
+    for folder in folders:
+        path = os.path.join('data_lake', folder)
+        os.mkdir(path)
+        print("Directory '%s' created" %folder)
+
+
 
 
 if __name__ == "__main__":
