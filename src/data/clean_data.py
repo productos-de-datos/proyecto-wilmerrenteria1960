@@ -28,7 +28,7 @@ def clean_data():
         df_melt = pd.melt(df, id_vars=['Fecha'], value_vars=df.columns[1:], var_name='hora', value_name='precio')
         df_resultado = pd.concat([df_resultado,df_melt], axis=0)
 
-
+    df_resultado = df_resultado[df_resultado["Fecha"].notnull()]
     df_resultado.columns = ['Fecha', 'hora', 'precio']
     df_resultado.to_csv("data_lake/cleansed/precios-horarios.csv",index=False)
 
