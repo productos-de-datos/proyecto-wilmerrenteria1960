@@ -1,9 +1,7 @@
 def load_data():
 
     import pandas as pd
-
-    in_path = 'data_lake/business/features/precios_diarios.csv'
-    data = pd.read_csv(in_path, sep=",")
+    data = pd.read_csv('data_lake/business/features/precios-diarios.csv', sep=",")
 
     return data
 
@@ -11,22 +9,22 @@ def load_data():
 def data_preparation(data):
     import pandas as pd
     df = data.copy()
-    df['fecha'] = pd.to_datetime(df['fecha'], format='%Y-%m-%d')
-    df['year'], df['month'], df['day'] = df['fecha'].dt.year, df['fecha'].dt.month, df['fecha'].dt.day
+    df['Fecha'] = pd.to_datetime(df['Fecha'], format='%Y-%m-%d')
+    df['year'], df['month'], df['day'] = df['Fecha'].dt.year, df['Fecha'].dt.month, df['Fecha'].dt.day
 
     y = df["precio"]
     x = df.copy()
     x.pop("precio")
-    x.pop("fecha")
+    x.pop("Fecha")
     return x, y
 
 
-def make_train_test_split(x, y):
+def make_train_test_split(X, y):
 
     from sklearn.model_selection import train_test_split
 
     (x_train, x_test, y_train, y_test) = train_test_split(
-        x,
+        X,
         y,
         test_size=0.25,
         random_state=12345,
@@ -34,7 +32,7 @@ def make_train_test_split(x, y):
     return x_train, x_test, y_train, y_test
 
 
-def trein_model(x_train, x_test):
+def train_model(x_train, x_test):
     from sklearn.preprocessing import StandardScaler
     from sklearn.ensemble import RandomForestRegressor
 
@@ -59,14 +57,11 @@ def save_model(model_RF):
 
 
 def train_daily_model():
-    """Entrena el modelo de pronóstico de precios diarios.
-    Con las features entrene el modelo de proóstico de precios diarios y
-    salvelo en models/precios-diarios.pkl
-    """
+
     data = load_data()
     x, y = data_preparation(data)
     x_train, x_test, y_train, y_test = make_train_test_split(x, y)
-    model_RF = trein_model(x_train, x_test)
+    model_RF = train_model(x_train, x_test)
     save_model(model_RF)
 
     #raise NotImplementedError("Implementar esta función")

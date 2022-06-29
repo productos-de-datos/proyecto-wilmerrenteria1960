@@ -13,12 +13,17 @@ def make_features():
 
     """
     import pandas as pd
-    df = pd.read_csv('data_lake/business/precios-diarios.csv')
-    df['fecha'] =  df[['Fecha']].apply(pd.to_datetime)
-    df['weekday'] = df.fecha.dt.weekday
-    df['weekday_bol'] = (df['weekday']>=5).astype(int)
-    df.to_csv('data_lake/business/features/precios_diarios.csv',index=False)
-    #raise NotImplementedError("Implementar esta función")
+    import os
+    import shutil
+
+    # print(os.getcwd())
+    os.chdir("./")
+
+    # Se copia el archivo de business a la carpeta features
+    shutil.copy(
+        "data_lake/business/precios-diarios.csv",
+        "data_lake/business/features/precios-diarios.csv",
+    )
 
 
 if __name__ == "__main__":

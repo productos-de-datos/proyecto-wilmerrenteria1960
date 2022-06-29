@@ -9,7 +9,6 @@ def make_monthly_prices_plot():
     import pandas as pd
     import matplotlib.pyplot as plt
 
-    path_file = r'data_lake/business/precios-mensuales'
     datos = pd.read_csv("data_lake/business/precios-mensuales.csv", index_col=None, sep=',', header=0)
     datos["Fecha"] = pd.to_datetime(datos["Fecha"])
     x = datos.Fecha
@@ -26,5 +25,5 @@ def make_monthly_prices_plot():
 
 if __name__ == "__main__":
     import doctest
-
+    make_monthly_prices_plot()
     doctest.testmod()

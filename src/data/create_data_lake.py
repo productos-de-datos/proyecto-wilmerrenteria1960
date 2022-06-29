@@ -24,7 +24,7 @@ def create_data_lake():
     import os
     os.mkdir('./data_lake/')
 
-    folders = ['landing', 'raw', 'cleansed', 'business','business/reports','business/features','business/forecasts', 'business/reports/figures']
+    folders = ['landing', 'raw', 'cleansed', 'business','business/reports','business/reports/figures','business/features','business/forecasts']
 
 
     for folder in folders:
