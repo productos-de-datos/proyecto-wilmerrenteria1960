@@ -10,14 +10,13 @@ def make_forecasts():
 
     def load_pkl():
         import pickle
-        with open("src/models/precios-diarios.pickle", "rb") as file:
+        with open("src/models/precios-diarios.pkl", "rb") as file:
             model_RF = pickle.load(file)
         return model_RF
 
     def score(x_train, y_train):
         import numpy as np
 
-        # Se agrega distintas estimaciones
         estimators = np.arange(10, 200, 10)
         scores = []
         for n in estimators:
@@ -44,14 +43,12 @@ def make_forecasts():
 
         from sklearn.ensemble import RandomForestRegressor
 
-        # Entrenamiento del moodelo con los estimadores sugeridos
         model_RF = RandomForestRegressor(
             n_estimators=estimador_n, random_state=12345)
         model_RF.fit(x_train, y_train)
         return model_RF
 
     def prediction_test_model(model_RF):
-        # Prediccion de x_test
         y_pred_RF_testeo = model_RF.predict(x_test)
         return y_pred_RF_testeo
 
@@ -85,7 +82,6 @@ def make_forecasts():
         df_model_RF.to_csv(
             'data_lake/business/forecasts/precios-diarios.csv', index=None)
 
-    # ejecución
     data = load_data()
     x, y = data_preparation(data)
     x_train, x_test, y_train, y_test = make_train_test_split(x, y)

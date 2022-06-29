@@ -52,8 +52,9 @@ def save_model(model_RF):
 
     import pickle
 
-    with open("src/models/precios-diarios.pickle", "wb") as file:
+    with open("src/models/precios-diarios.pkl", "wb") as file:
         pickle.dump(model_RF, file,  pickle.HIGHEST_PROTOCOL)
+
 
 
 def train_daily_model():
