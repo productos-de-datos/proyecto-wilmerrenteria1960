@@ -37,7 +37,7 @@ def clean_data():
 def test_ResultColumns():
     read_file = pd.read_csv(
                 'data_lake/cleansed/precios-horarios.csv')
-    assert ["Fecha","Hora","Precio"] == list(read_file.columns.values)
+    assert ["Fecha","hora","precio"] == list(read_file.columns.values)
 
     #raise NotImplementedError("Implementar esta función")
 
