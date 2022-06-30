@@ -10,7 +10,7 @@ def make_forecasts():
 
     def load_pkl():
         import pickle
-        with open("src/models/precios-diarios.pkl", "rb") as file:
+        with open("src/models/precios-diarios.pickle", "rb") as file:
             model_RF = pickle.load(file)
         return model_RF
 
