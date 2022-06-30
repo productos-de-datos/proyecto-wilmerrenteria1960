@@ -122,8 +122,8 @@
     },
     {
       "name": "Test 13",
-      "setup": "pip3 install matplotlib sklearn pandas luigi pytest pylint openpyxl xlrd",
-      "run": "pylint",
+      "setup": "pip3 install matplotlib sklearn pandas luigi pytest pylint",
+      "run": "pylint *.py",
       "input": "",
       "output": "",
       "comparison": "included",

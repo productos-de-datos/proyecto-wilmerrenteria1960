@@ -1,11 +1,10 @@
-#
-# Evaluador
-# ---------------------------------------------------------------------------------------
-#
-# test_01: pylint
-# test_02: pytest
-# test_03: doctest
-#
+"""
+Evaluador
+---------------------------------------------------------------------------------------
+ test_01: pylint
+ test_02: pytest
+ test_03: doctest
+"""
 
 from glob import glob
 import os
