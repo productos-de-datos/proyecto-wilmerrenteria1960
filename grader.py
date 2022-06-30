@@ -1,12 +1,16 @@
-
-'''
-#Evaluador
-#---------------------------------------------------------------------------------------
-test_01: pylint
-test_02: pytest
-test_03: doctest
-'''
-
+#
+# Evaluador
+# ---------------------------------------------------------------------------------------
+#
+# test_01: pylint
+# test_02: pytest
+# test_03: doctest
+#
+"""
+This grader tests all the points
+"""
+# pylint: disable=import-outside-toplevel
+#from glob import glob
 import os
 import sys
 
@@ -165,8 +169,4 @@ test = {
 }[sys.argv[1]]
 
 
-if __name__ == "__main__":
-
-    import doctest
-    doctest.testmod()
-    test()
+test()
