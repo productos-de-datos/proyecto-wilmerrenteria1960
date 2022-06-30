@@ -1,28 +1,30 @@
+"""
+    Funcion crea el directorio correspondiente
+"""
+# pylint: disable=import-outside-toplevel
+
+
 import os
 
 def create_data_lake():
-    """Cree el data lake con sus capas.
-
+    """
+    Cree el data lake con sus capas.
     Esta función debe crear la carpeta `data_lake` en la raiz del proyecto. El data lake contiene
     las siguientes subcarpetas:
-
-    ```
-    .
-    |
-    |___ data_lake/
-         |___ landing/
-         |___ raw/
-         |___ cleansed/
-         |___ business/
-             |___reports/
-              |    |___figures/
-              |___ features/
-              |___ forecasts/
-
-    ```
+        ```
+        .
+        |
+        ___data_lake/
+            |___ landing/
+            |___raw/
+            |___cleansed/
+            ___ business/
+                |___ reports/
+                |    |___ figures/
+                |___ features/
+                |___ forecasts/
+        ```
     """
-
-    # Se crea las 
     folders = [
         "landing",
         "raw",
