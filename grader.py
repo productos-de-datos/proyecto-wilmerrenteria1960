@@ -1,12 +1,12 @@
-"""
-Evaluador
----------------------------------------------------------------------------------------
- test_01: pylint
- test_02: pytest
- test_03: doctest
-"""
 
-from glob import glob
+'''
+#Evaluador
+#---------------------------------------------------------------------------------------
+test_01: pylint
+test_02: pytest
+test_03: doctest
+'''
+
 import os
 import sys
 
@@ -121,7 +121,7 @@ def test_08():
 
 
 def test_09():
-    """Evalua figura precios diarios"""
+    """Evalua figura precios mensuales"""
     os.system("make make_monthly_prices_plot")
     assert (
         os.path.isfile(
@@ -133,13 +133,13 @@ def test_10():
     """Evalua la creación de características para modelos"""
     os.system("make make_features")
     assert os.path.isfile(
-        "data_lake/business/features/precios-diarios.csv") is True
+        "data_lake/business/features/precios_diarios.csv") is True
 
 
 def test_11():
-    os.system("make train_daily_model")
     """Modelo creado"""
-    assert os.path.isfile("src/models/precios-diarios.pkl") is True
+    os.system("make train_daily_model")
+    assert os.path.isfile("src/models/precios-diarios.pickle") is True
 
 
 def test_12():
@@ -164,4 +164,9 @@ test = {
     "12": test_12,
 }[sys.argv[1]]
 
-test()
+
+if __name__ == "__main__":
+
+    import doctest
+    doctest.testmod()
+    test()
