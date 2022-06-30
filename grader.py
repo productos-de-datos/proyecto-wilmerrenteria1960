@@ -125,7 +125,7 @@ def test_08():
 
 
 def test_09():
-    """Evalua figura precios mensuales"""
+    """Evalua figura precios diarios"""
     os.system("make make_monthly_prices_plot")
     assert (
         os.path.isfile(
@@ -139,11 +139,10 @@ def test_10():
     assert os.path.isfile(
         "data_lake/business/features/precios-diarios.csv") is True
 
-
 def test_11():
     """Modelo creado"""
     os.system("make train_daily_model")
-    assert os.path.isfile("src/models/precios-diarios.pickle") is True
+    assert os.path.isfile("src/models/precios-diarios.pkl") is True
 
 
 def test_12():
@@ -167,6 +166,5 @@ test = {
     "11": test_11,
     "12": test_12,
 }[sys.argv[1]]
-
 
 test()
