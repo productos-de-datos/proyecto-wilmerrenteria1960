@@ -1,3 +1,7 @@
+import os
+import pandas as pd
+    
+
 def clean_data():
     """Realice la limpieza y transformación de los archivos CSV.
 
@@ -12,9 +16,7 @@ def clean_data():
 
 
     """
-    import os
-    import pandas as pd
-    
+
     archivosraw = []
 
     for files in os.listdir("data_lake/raw/"):
@@ -32,6 +34,10 @@ def clean_data():
     df_resultado.columns = ['Fecha', 'hora', 'precio']
     df_resultado.to_csv("data_lake/cleansed/precios-horarios.csv",index=False)
 
+def test_ResultColumns():
+    read_file = pd.read_csv(
+                'data_lake/cleansed/precios-horarios.csv')
+    assert ["Fecha","Hora","Precio"] == list(read_file.columns.values)
 
     #raise NotImplementedError("Implementar esta función")
 
